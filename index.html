@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenali Stunting: Pencegahan & Penanganan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00A19D;
+            --secondary: #FFB344;
+            --accent: #FF6B6B;
+            --dark: #1E3163;
+            --light: #E8F9FD;
+            --gradient: linear-gradient(135deg, #00A19D 0%, #1E3163 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .menu-toggle {
+            position: absolute;
+            left: 1rem;
+            top: 1.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: var(--dark);
+            padding: 0.75rem;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.25rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        nav a i {
+            margin-right: 6px;
+            font-size: 0.9rem;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 1rem auto;
+            padding: 0 1rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+        
+        h1, h2, h3, h4 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            border-left: 4px solid var(--primary);
+            padding-left: 0.75rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            box-shadow: 0 4px 8px rgba(0,161,157,0.2);
+            margin: 0.5rem 0;
+        }
+        
+        .btn i {
+            margin-right: 8px;
+        }
+        
+        .btn:hover {
+            background-color: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,161,157,0.3);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: #333;
+        }
+        
+        .btn-accent {
+            background-color: var(--accent);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .tab-content {
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 2rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+        
+        .social-icons {
+            margin: 1rem 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        /* Interactive Elements */
+        .accordion {
+            margin: 1rem 0;
+        }
+        
+        .accordion-header {
+            background-color: var(--light);
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-header:hover {
+            background-color: #d4f3f2;
+        }
+        
+        .accordion-content {
+            padding: 1rem;
+            background-color: white;
+            border-radius: 0 0 8px 8px;
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+        
+        .accordion.active .accordion-content {
+            display: block;
+        }
+        
+        .accordion.active .accordion-header {
+            border-radius: 8px 8px 0 0;
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Nutrition Calculator */
+        .calculator {
+            background-color: var(--light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+        }
+        
+        .calculator label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .calculator input, .calculator select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        
+        .result-box {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            display: none;
+            animation: fadeIn 0.5s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav {
+                flex-direction: column;
+                align-items: center;
+                display: none;
+                padding: 1rem 0;
+            }
+            
+            nav.active {
+                display: flex;
+            }
+            
+            nav a {
+                width: 90%;
+                margin: 0.25rem 0;
+                justify-content: center;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            h2 {
+                font-size: 1.3rem;
+            }
+            
+            .card {
+                padding: 1.25rem;
+            }
+        }
+        
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 6px 16px rgba(255,107,107,0.3);
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        
+        .fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(255,107,107,0.4);
+        }
+        
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            background-color: #f1f1f1;
+            border-radius: 50px;
+            margin: 1rem 0;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            border-radius: 50px;
+            background: var(--gradient);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <h1><i class="fas fa-child"></i> Kenali Stunting</h1>
+            <p>Aplikasi Edukasi Pencegahan & Penanganan Stunting</p>
+        </div>
+    </header>
+    
+    <nav id="main-nav">
+        <a href="#" class="tab-link active" data-tab="home"><i class="fas fa-home"></i> Beranda</a>
+        <a href="#" class="tab-link" data-tab="about"><i class="fas fa-info-circle"></i> Tentang Stunting</a>
+        <a href="#" class="tab-link" data-tab="prevention"><i class="fas fa-shield-alt"></i> Pencegahan</a>
+        <a href="#" class="tab-link" data-tab="treatment"><i class="fas fa-hand-holding-medical"></i> Penanganan</a>
+        <a href="#" class="tab-link" data-tab="nutrition"><i class="fas fa-apple-alt"></i> Gizi Penting</a>
+        <a href="#" class="tab-link" data-tab="checker"><i class="fas fa-clipboard-check"></i> Cek Risiko</a>
+    </nav>
+    
+    <div class="container">
+        <!-- Beranda -->
+        <div id="home" class="tab-content">
+            <div class="card">
+                <h2>Selamat Datang di Aplikasi Kenali Stunting</h2>
+                <p>Aplikasi ini memberikan informasi komprehensif tentang stunting, termasuk pencegahan dan penanganannya, khusus untuk masyarakat Indonesia.</p>
+                
+                <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%; margin: 1rem 0; border-radius: 12px; overflow: hidden;">
+                    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <span>Fakta Penting Tentang Stunting</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <ul style="margin-left: 1.5rem;">
+                            <li>Stunting mempengaruhi perkembangan fisik dan kognitif anak</li>
+                            <li>Dampak stunting bisa permanen jika tidak ditangani</li>
+                            <li>Pencegahan paling efektif dilakukan sejak masa kehamilan</li>
+                            <li>Asupan gizi yang baik dapat mencegah stunting</li>
+                            <li>1 dari 4 anak Indonesia mengalami stunting</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <a href="#" class="btn tab-link" data-tab="about"><i class="fas fa-book-open"></i> Mulai Belajar</a>
+            </div>
+            
+            <div class="card">
+                <h2>Layanan Cepat</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1rem 0;">
+                    <a href="#" class="btn btn-secondary tab-link" data-tab="checker" style="flex-direction: column; padding: 1rem;">
+                        <i class="fas fa-stethoscope" style="font-size: 1.5rem; margin-bottom: 0.5rem;"></i>
+                        Cek Risiko
+                    </a>
+                    <a href="#" class="btn btn-secondary tab-link" data-tab="nutrition" style="flex-direction: column; padding: 1rem;">
+                        <i class="fas fa-utensils" style="font-size: 1.5rem; margin-bottom: 0.5rem;"></i>
+                        Menu Sehat
+                    </a>
+                    <a href="#" class="btn btn-secondary tab-link" data-tab="prevention" style="flex-direction: column; padding: 1rem;">
+                        <i class="fas fa-baby" style="font-size: 1.5rem; margin-bottom: 0.5rem;"></i>
+                        Tips Ibu Hamil
+                    </a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>Artikel Terbaru</h2>
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <span>10 Makanan Kaya Protein untuk Cegah Stunting</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Protein adalah nutrisi penting untuk pertumbuhan anak. Berikut 10 makanan lokal Indonesia yang kaya protein:</p>
+                        <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Telur</li>
+                            <li>Ikan kembung</li>
+                            <li>Tempe</li>
+                            <li>Daging ayam</li>
+                            <li>Kacang hijau</li>
+                        </ol>
+                        <a href="#" class="btn btn-accent tab-link" data-tab="nutrition" style="margin-top: 1rem;">
+                            <i class="fas fa-arrow-right"></i> Lihat Selengkapnya
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <span>Pentingnya Imunisasi untuk Cegah Stunting</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Imunisasi lengkap membantu mencegah penyakit infeksi yang dapat menyebabkan stunting. Pastikan anak mendapatkan:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>BCG</li>
+                            <li>DPT-HB-Hib</li>
+                            <li>Polio</li>
+                            <li>Campak</li>
+                        </ul>
+                        <a href="#" class="btn btn-accent tab-link" data-tab="prevention" style="margin-top: 1rem;">
+                            <i class="fas fa-arrow-right"></i> Jadwal Imunisasi
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tentang Stunting -->
+        <div id="about" class="tab-content hidden">
+            <div class="card">
+                <h2>Apa Itu Stunting?</h2>
+                <p>Stunting adalah kondisi gagal tumbuh pada anak balita akibat kekurangan gizi kronis dan infeksi berulang, terutama dalam 1.000 Hari Pertama Kehidupan (HPK).</p>
+                
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 75%"></div>
+                </div>
+                <p style="text-align: center; font-size: 0.9rem; color: var(--dark);">75% perkembangan otak terjadi dalam 1.000 HPK</p>
+                
+                <h3 style="margin-top: 1.5rem;">Ciri-ciri Anak Stunting:</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0;">
+                    <div style="background-color: #FFF5F5; padding: 1rem; border-radius: 8px; border-left: 4px solid var(--accent);">
+                        <h4><i class="fas fa-ruler-vertical"></i> Tinggi Badan</h4>
+                        <p>Di bawah standar untuk usianya</p>
+                    </div>
+                    <div style="background-color: #FFF5F5; padding: 1rem; border-radius: 8px; border-left: 4px solid var(--accent);">
+                        <h4><i class="fas fa-brain"></i> Perkembangan</h4>
+                        <p>Kognitif dan motorik terlambat</p>
+                    </div>
+                    <div style="background-color: #FFF5F5; padding: 1rem; border-radius: 8px; border-left: 4px solid var(--accent);">
+                        <h4><i class="fas fa-shield-virus"></i> Imunitas</h4>
+                        <p>Rentan terhadap penyakit infeksi</p>
+                    </div>
+                </div>
+                
+                <h3>Penyebab Stunting:</h3>
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <span><i class="fas fa-utensils"></i> Faktor Gizi</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Kurangnya asupan gizi makro (protein, karbohidrat, lemak) dan mikro (zat besi, zinc, vitamin A, dll) selama kehamilan dan masa balita.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <span><i class="fas fa-heartbeat"></i> Faktor Kesehatan</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Infeksi berulang seperti diare dan ISPA, sanitasi buruk, serta kurangnya akses ke layanan kesehatan.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <span><i class="fas fa-home"></i> Faktor Lingkungan</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Kemiskinan, pendidikan orang tua rendah, pola asuh tidak memadai, dan ketahanan pangan keluarga yang buruk.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>Dampak Jangka Panjang Stunting</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1rem 0;">
+                    <div style="text-align: center; padding: 1rem; background-color: #F0F7FF; border-radius: 8px;">
+                        <div style="width: 60px; height: 60px; background-color: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-size: 1.5rem;">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <p style="font-weight: 500;">Prestasi Akademik Rendah</p>
+                    </div>
+                    <div style="text-align: center; padding: 1rem; background-color: #F0F7FF; border-radius: 8px;">
+                        <div style="width: 60px; height: 60px; background-color: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-size: 1.5rem;">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <p style="font-weight: 500;">Produktivitas Kerja Menurun</p>
+                    </div>
+                    <div style="text-align: center; padding: 1rem; background-color: #F0F7FF; border-radius: 8px;">
+                        <div style="width: 60px; height: 60px; background-color: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-size: 1.5rem;">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <p style="font-weight: 500;">Risiko Penyakit Degeneratif</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pencegahan -->
+        <div id="prevention" class="tab-content hidden">
+            <div class="card">
+                <h2>Pencegahan Stunting</h2>
+                <p>Pencegahan stunting harus dimulai sejak masa kehamilan hingga anak berusia 2 tahun (periode 1.000 HPK).</p>
+                
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <span><i class="fas fa-female"></i> 1. Gizi Ibu Hamil</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Pastikan ibu hamil mengonsumsi makanan bergizi seimbang, suplemen zat besi dan asam folat, serta melakukan pemeriksaan kehamilan rutin.</p>
+                        <div style="margin-top: 1rem;">
+                            <h4>Contoh Menu Sehari:</h4>
+                            <ul style="margin-left: 1.5rem;">
+                                <li>Sarapan: Nasi merah + telur dadar + sayur bayam</li>
+                                <li>Snack: Buah pisang + susu</li>
+                                <li>Makan siang: Nasi + ikan + tempe + lalapan</li>
+                                <li>Snack sore: Kacang hijau</li>
+                                <li>Makan malam: Nasi + sup ayam + tahu</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <span><i class="fas fa-baby"></i> 2. ASI Eksklusif</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Berikan ASI eksklusif selama 6 bulan pertama kehidupan bayi, dilanjutkan dengan MPASI bergizi setelahnya.</p>
+                        <div style="margin-top: 1rem;">
+                            <h4>Manfaat ASI:</h4>
+                            <ul style="margin-left: 1.5rem;">
+                                <li>Mengandung antibodi untuk kekebalan tubuh</li>
+                                <li>Mudah dicerna bayi</li>
+                                <li>Mengurangi risiko alergi</li>
+                                <li>Meningkatkan ikatan emosional</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="calculator" style="margin-top: 1.5rem;">
+                    <h3><i class="fas fa-calculator"></i> Kalkulator Kebutuhan Gizi Ibu Hamil</h3>
+                    <form id="pregnancy-calculator">
+                        <label for="pregnancy-month">Bulan Kehamilan:</label>
+                        <select id="pregnancy-month">
+                            <option value="1">Bulan 1</option>
+                            <option value="2">Bulan 2</option>
+                            <option value="3">Bulan 3</option>
+                            <option value="4">Bulan 4</option>
+                            <option value="5">Bulan 5</option>
+                            <option value="6">Bulan 6</option>
+                            <option value="7">Bulan 7</option>
+                            <option value="8">Bulan 8</option>
+                            <option value="9">Bulan 9</option>
+                        </select>
+                        
+                        <label for="mother-weight">Berat Badan Ibu (kg):</label>
+                        <input type="number" id="mother-weight" placeholder="Contoh: 55">
+                        
+                        <label for="mother-height">Tinggi Badan Ibu (cm):</label>
+                        <input type="number" id="mother-height" placeholder="Contoh: 160">
+                        
+                        <button type="button" class="btn" id="calculate-pregnancy">
+                            <i class="fas fa-calculator"></i> Hitung Kebutuhan Gizi
+                        </button>
+                    </form>
+                    
+                    <div class="result-box" id="pregnancy-result">
+                        <h4>Hasil Perhitungan</h4>
+                        <div id="pregnancy-result-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Penanganan -->
+        <div id="treatment" class="tab-content hidden">
+            <div class="card">
+                <h2>Penanganan Anak Stunting</h2>
+                <p>Jika anak sudah terdiagnosa stunting, beberapa langkah penanganan dapat dilakukan untuk meminimalisir dampaknya.</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1rem 0;">
+                    <div style="background-color: #FFF5F5; padding: 1rem; border-radius: 8px; border-left: 4px solid var(--accent);">
+                        <h4><i class="fas fa-weight"></i> Asesmen Gizi</h4>
+                        <p>Pengukuran antropometri dan penilaian asupan gizi harian anak.</p>
+                    </div>
+                    <div style="background-color: #FFF5F5; padding: 1rem; border-radius: 8px; border-left: 4px solid var(--accent);">
+                        <h4><i class="fas fa-utensils"></i> Intervensi Gizi</h4>
+                        <p>Makanan tinggi protein dan energi, serta suplementasi mikronutrien.</p>
+                    </div>
+                    <div style="background-color: #FFF5F5; padding: 1rem; border-radius: 8px; border-left: 4px solid var(--accent);">
+                        <h4><i class="fas fa-brain"></i> Stimulasi</h4>
+                        <p>Stimulasi kognitif dan motorik sesuai usia anak.</p>
+                    </div>
+                </div>
+                
+                <h3>Formula Pemulihan Gizi (RUTF):</h3>
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <span><i class="fas fa-info-circle"></i> Tentang RUTF</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Ready-to-Use Therapeutic Food (RUTF) adalah makanan terapeutik siap pakai untuk kasus stunting berat yang mengandung:</p>
+                        <ul style="margin-left: 1.5rem;">
+                            <li>500-550 kkal/hari</li>
+                            <li>Protein 10-12% dari total energi</li>
+                            <li>Lemak 45-60% dari total energi</li>
+                            <li>Vitamin dan mineral esensial</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 1.5rem;">Contoh Menu Pemulihan:</h3>
+                <div style="overflow-x: auto;">
+                    <table style="width:100%; border-collapse: collapse; margin: 1rem 0; min-width: 500px;">
+                        <thead>
+                            <tr style="background-color: var(--accent); color: white;">
+                                <th style="padding: 0.75rem; text-align: left;">Bahan Makanan</th>
+                                <th style="padding: 0.75rem; text-align: left;">Porsi</th>
+                                <th style="padding: 0.75rem; text-align: left;">Kandungan Gizi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #eee;">
+                                <td style="padding: 0.75rem;">Telur rebus</td>
+                                <td style="padding: 0.75rem;">1 butir</td>
+                                <td style="padding: 0.75rem;">Protein 6g, zat besi, vitamin A</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #eee;">
+                                <td style="padding: 0.75rem;">Daging sapi cincang</td>
+                                <td style="padding: 0.75rem;">50g</td>
+                                <td style="padding: 0.75rem;">Protein 10g, zat besi, zinc</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #eee;">
+                                <td style="padding: 0.75rem;">Susu full cream</td>
+                                <td style="padding: 0.75rem;">200ml</td>
+                                <td style="padding: 0.75rem;">Kalsium, protein, vitamin D</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.75rem;">Alpukat</td>
+                                <td style="padding: 0.75rem;">1/2 buah</td>
+                                <td style="padding: 0.75rem;">Lemak sehat, kalori tinggi</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="calculator" style="margin-top: 1.5rem;">
+                    <h3><i class="fas fa-calculator"></i> Kalkulator Kebutuhan Gizi Anak</h3>
+                    <form id="child-calculator">
+                        <label for="child-age">Usia Anak (tahun):</label>
+                        <input type="number" id="child-age" placeholder="Contoh: 2">
+                        
+                        <label for="child-weight">Berat Badan (kg):</label>
+                        <input type="number" step="0.1" id="child-weight" placeholder="Contoh: 12.5">
+                        
+                        <label for="child-height">Tinggi Badan (cm):</label>
+                        <input type="number" id="child-height" placeholder="Contoh: 85">
+                        
+                        <button type="button" class="btn" id="calculate-child">
+                            <i class="fas fa-calculator"></i> Hitung Kebutuhan Gizi
+                        </button>
+                    </form>
+                    
+                    <div class="result-box" id="child-result">
+                        <h4>Hasil Perhitungan</h4>
+                        <div id="child-result-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Gizi Penting -->
+        <div id="nutrition" class="tab-content hidden">
+            <div class="card">
+                <h2>Nutrisi Penting untuk Cegah Stunting</h2>
+                <p>Beberapa nutrisi kritis berperan penting dalam mencegah stunting dan mendukung pertumbuhan optimal anak.</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1rem 0;">
+                    <div style="background-color: #F0F7FF; padding: 1rem; border-radius: 8px; border: 1px solid rgba(0,0,0,0.05);">
+                        <h4><i class="fas fa-dna"></i> Protein</h4>
+                        <p><strong>Sumber:</strong> Daging, ikan, telur, susu, kacang-kacangan, tempe, tahu</p>
+                        <p><strong>Fungsi:</strong> Membangun sel dan jaringan tubuh</p>
+                    </div>
+                    
+                    <div style="background-color: #F0F7FF; padding: 1rem; border-radius: 8px; border: 1px solid rgba(0,0,0,0.05);">
+                        <h4><i class="fas fa-magnet"></i> Zat Besi</h4>
+                        <p><strong>Sumber:</strong> Hati, daging merah, bayam, kacang-kacangan</p>
+                        <p><strong>Fungsi:</strong> Mencegah anemia, perkembangan otak</p>
+                    </div>
+                    
+                    <div style="background-color: #F0F7FF; padding: 1rem; border-radius: 8px; border: 1px solid rgba(0,0,0,0.05);">
+                        <h4><i class="fas fa-atom"></i> Zinc (Seng)</h4>
+                        <p><strong>Sumber:</strong> Daging, seafood, biji-bijian, kacang-kacangan</p>
+                        <p><strong>Fungsi:</strong> Sistem imun dan pertumbuhan sel</p>
+                    </div>
+                    
+                    <div style="background-color: #F0F7FF; padding: 1rem; border-radius: 8px; border: 1px solid rgba(0,0,0,0.05);">
+                        <h4><i class="fas fa-eye"></i> Vitamin A</h4>
+                        <p><strong>Sumber:</strong> Hati, wortel, ubi jalar, sayuran hijau</p>
+                        <p><strong>Fungsi:</strong> Penglihatan dan imunitas</p>
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 1.5rem;">Contoh Menu Sehari:</h3>
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <span><i class="fas fa-baby"></i> Menu untuk Anak 6-12 Bulan</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <ul style="margin-left: 1.5rem;">
+                            <li>Pagi: Bubur susu + pisang lumat</li>
+                            <li>Siang: Bubur beras merah + hati ayam + wortel</li>
+                            <li>Sore: Puree alpukat + ASI</li>
+                            <li>Malam: Bubur kacang hijau</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <span><i class="fas fa-child"></i> Menu untuk Anak 1-3 Tahun</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <ul style="margin-left: 1.5rem;">
+                            <li>Pagi: Nasi tim + telur + sayur bayam</li>
+                            <li>Snack: Buah pepaya + susu</li>
+                            <li>Siang: Nasi + ikan + tempe + sop wortel</li>
+                            <li>Sore: Puding susu + buah</li>
+                            <li>Malam: Nasi + ayam + tahu + sayur</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Cek Risiko -->
+        <div id="checker" class="tab-content hidden">
+            <div class="card">
+                <h2>Cek Risiko Stunting</h2>
+                <p>Isi kuesioner berikut untuk menilai risiko stunting pada anak Anda.</p>
+                
+                <form id="stunting-risk-form">
+                    <div style="margin-bottom: 1rem;">
+                        <label for="age" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Usia Anak (bulan):</label>
+                        <input type="number" id="age" style="width:100%; padding:0.75rem; border:1px solid #ddd; border-radius:8px; font-size:1rem;" required>
+                    </div>
+                    
+                    <div style="margin-bottom: 1rem;">
+                        <label for="height" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Tinggi Badan Anak (cm):</label>
+                        <input type="number" id="height" style="width:100%; padding:0.75rem; border:1px solid #ddd; border-radius:8px; font-size:1rem;" required>
+                    </div>
+                    
+                    <div style="margin-bottom: 1rem;">
+                        <label for="weight" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Berat Badan Anak (kg):</label>
+                        <input type="number" step="0.1" id="weight" style="width:100%; padding:0.75rem; border:1px solid #ddd; border-radius:8px; font-size:1rem;" required>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Apakah anak sering sakit (diare/ISPA)?</label>
+                        <div style="display: flex; gap: 1rem;">
+                            <label style="display: flex; align-items: center;">
+                                <input type="radio" id="sick-yes" name="sick" value="yes" required style="margin-right: 0.5rem;">
+                                Ya
+                            </label>
+                            <label style="display: flex; align-items: center;">
+                                <input type="radio" id="sick-no" name="sick" value="no" style="margin-right: 0.5rem;">
+                                Tidak
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Apakah anak mendapat ASI eksklusif 6 bulan?</label>
+                        <div style="display: flex; gap: 1rem;">
+                            <label style="display: flex; align-items: center;">
+                                <input type="radio" id="asi-yes" name="asi" value="yes" required style="margin-right: 0.5rem;">
+                                Ya
+                            </label>
+                            <label style="display: flex; align-items: center;">
+                                <input type="radio" id="asi-no" name="asi" value="no" style="margin-right: 0.5rem;">
+                                Tidak
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Apakah anak mengonsumsi protein hewani setiap hari?</label>
+                        <div style="display: flex; gap: 1rem;">
+                            <label style="display: flex; align-items: center;">
+                                <input type="radio" id="protein-yes" name="protein" value="yes" required style="margin-right: 0.5rem;">
+                                Ya
+                            </label>
+                            <label style="display: flex; align-items: center;">
+                                <input type="radio" id="protein-no" name="protein" value="no" style="margin-right: 0.5rem;">
+                                Tidak
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn" style="width:100%;">
+                        <i class="fas fa-stethoscope"></i> Cek Risiko Sekarang
+                    </button>
+                </form>
+                
+                <div id="risk-result" style="margin-top: 1.5rem; display: none;">
+                    <h3>Hasil Penilaian Risiko Stunting</h3>
+                    <div id="result-content" style="padding: 1.5rem; border-radius: 12px;"></div>
+                    <div id="recommendation" style="margin-top: 1.5rem;">
+                        <h4>Rekomendasi:</h4>
+                        <div id="recommendation-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="fab" id="consult-fab">
+        <i class="fas fa-comment-medical"></i>
+    </div>
+    
+    <footer>
+        <div class="footer-links">
+            <a href="#">Tentang Kami</a>
+            <a href="#">Kebijakan Privasi</a>
+            <a href="#">Kontak</a>
+        </div>
+        
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        
+        <p>Aplikasi Kenali Stunting &copy; 2025</p>
+        <p>Dikembangkan oleh Mardiana Martan</p>
+    </footer>
+    
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        
+        menuToggle.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+            this.querySelector('i').classList.toggle('fa-bars');
+            this.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        // Tab Navigation
+        document.querySelectorAll('.tab-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const tabId = this.getAttribute('data-tab');
+                
+                // Hide all tabs
+                document.querySelectorAll('.tab-content').forEach(tab => {
+                    tab.classList.add('hidden');
+                });
+                
+                // Show selected tab
+                document.getElementById(tabId).classList.remove('hidden');
+                
+                // Update active tab in navigation
+                document.querySelectorAll('.tab-link').forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // Close mobile menu if open
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    menuToggle.querySelector('i').classList.remove('fa-times');
+                    menuToggle.querySelector('i').classList.add('fa-bars');
+                }
+                
+                // Scroll to top
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            });
+        });
+        
+        // Accordion Functionality
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', function() {
+                const accordion = this.parentElement;
+                accordion.classList.toggle('active');
+                
+                const icon = this.querySelector('i');
+                if (accordion.classList.contains('active')) {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            });
+        });
+        
+        // Risk Assessment Form
+        document.getElementById('stunting-risk-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const age = parseInt(document.getElementById('age').value);
+            const height = parseInt(document.getElementById('height').value);
+            const weight = parseFloat(document.getElementById('weight').value);
+            const sick = document.querySelector('input[name="sick"]:checked').value;
+            const asi = document.querySelector('input[name="asi"]:checked').value;
+            const protein = document.querySelector('input[name="protein"]:checked').value;
+            
+            // Calculate risk
+            let riskScore = 0;
+            let messages = [];
+            
+            // Check height for age (simplified)
+            if (age <= 24) {
+                const expectedHeight = 70 + (age * 1.5); // Simplified formula
+                if (height < expectedHeight * 0.9) {
+                    riskScore += 2;
+                    messages.push(`Tinggi badan anak (${height}cm) di bawah rata-rata untuk usianya (${Math.round(expectedHeight)}cm).`);
+                }
+            } else {
+                const expectedHeight = 85 + ((age - 24) * 0.8); // Simplified formula
+                if (height < expectedHeight * 0.9) {
+                    riskScore += 2;
+                    messages.push(`Tinggi badan anak (${height}cm) di bawah rata-rata untuk usianya (${Math.round(expectedHeight)}cm).`);
+                }
+            }
+            
+            // Check weight for height (simplified)
+            const expectedWeight = (height - 100) * 0.9; // Simplified formula for kids
+            if (weight < expectedWeight * 0.9) {
+                riskScore += 1;
+                messages.push(`Berat badan anak (${weight}kg) relatif rendah untuk tingginya (${Math.round(expectedWeight)}kg).`);
+            }
+            
+            // Other risk factors
+            if (sick === 'yes') {
+                riskScore += 1;
+                messages.push(`Anak sering sakit, yang dapat mempengaruhi pertumbuhan.`);
+            }
+            
+            if (asi === 'no') {
+                riskScore += 1;
+                messages.push(`Anak tidak mendapat ASI eksklusif, yang merupakan faktor protektif terhadap stunting.`);
+            }
+            
+            if (protein === 'no') {
+                riskScore += 1;
+                messages.push(`Asupan protein hewani yang kurang dapat mempengaruhi pertumbuhan.`);
+            }
+            
+            // Determine risk level
+            let riskLevel, riskColor, recommendations;
+            
+            if (riskScore <= 2) {
+                riskLevel = "Rendah";
+                riskColor = "#4CAF50";
+                recommendations = [
+                    "Pertahankan pola makan bergizi seimbang",
+                    "Lanjutkan pemantauan pertumbuhan di posyandu/puskesmas",
+                    "Berikan stimulasi perkembangan sesuai usia"
+                ];
+            } else if (riskScore <= 4) {
+                riskLevel = "Sedang";
+                riskColor = "#FFC107";
+                recommendations = [
+                    "Tingkatkan asupan makanan bergizi, terutama protein hewani",
+                    "Periksa ke fasilitas kesehatan untuk evaluasi lebih lanjut",
+                    "Pastikan imunisasi lengkap",
+                    "Pantau pertumbuhan setiap bulan"
+                ];
+            } else {
+                riskLevel = "Tinggi";
+                riskColor = "#F44336";
+                recommendations = [
+                    "Segera konsultasikan dengan dokter atau ahli gizi",
+                    "Perbaiki asupan gizi dengan makanan berenergi dan protein tinggi",
+                    "Lakukan pemeriksaan kesehatan menyeluruh",
+                    "Pantau pertumbuhan setiap bulan",
+                    "Berikan stimulasi perkembangan intensif"
+                ];
+            }
+            
+            // Display results
+            const resultContent = document.getElementById('result-content');
+            resultContent.innerHTML = `
+                <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                    <div style="width: 60px; height: 60px; background-color: ${riskColor}; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin-right: 1rem;">
+                        ${riskScore}/6
+                    </div>
+                    <div>
+                        <p style="font-size: 1.2rem; font-weight: 500; margin-bottom: 0.25rem;">Tingkat Risiko: <span style="color:${riskColor};">${riskLevel}</span></p>
+                        <p style="font-size: 0.9rem; color: #666;">Berdasarkan jawaban yang diberikan</p>
+                    </div>
+                </div>
+                ${messages.length > 0 ? '<div style="background-color: rgba(0,0,0,0.03); padding: 1rem; border-radius: 8px; margin-top: 1rem;"><p style="font-weight: 500; margin-bottom: 0.5rem;"><i class="fas fa-info-circle" style="color: ${riskColor};"></i> Catatan Penting:</p><ul style="margin-left: 1.5rem;">' + messages.map(msg => `<li>${msg}</li>`).join('') + '</ul></div>' : ''}
+            `;
+            resultContent.style.border = `2px solid ${riskColor}`;
+            resultContent.style.backgroundColor = `${riskColor}10`;
+            
+            const recommendationContent = document.getElementById('recommendation-content');
+            recommendationContent.innerHTML = `
+                <ul style="margin-left: 1.5rem;">${recommendations.map(rec => `<li>${rec}</li>`).join('')}</ul>
+                <p style="margin-top: 1rem; font-style: italic; color: #666;">Hasil ini hanya perkiraan awal. Konsultasikan dengan tenaga kesehatan untuk penilaian lebih akurat.</p>
+                <a href="#" class="btn" style="margin-top: 1rem; background-color: ${riskColor};">
+                    <i class="fas fa-calendar-alt"></i> Buat Janji dengan Ahli Gizi
+                </a>
+            `;
+            
+            document.getElementById('risk-result').style.display = 'block';
+            
+            // Scroll to result
+            document.getElementById('risk-result').scrollIntoView({behavior: 'smooth'});
+        });
+        
+        // Pregnancy Calculator
+        document.getElementById('calculate-pregnancy').addEventListener('click', function() {
+            const month = parseInt(document.getElementById('pregnancy-month').value);
+            const weight = parseFloat(document.getElementById('mother-weight').value);
+            const height = parseInt(document.getElementById('mother-height').value);
+            
+            if (!weight || !height) {
+                alert('Harap isi berat dan tinggi badan dengan benar');
+                return;
+            }
+            
+            // Simplified calculation (in real app, use proper formula)
+            const bmi = weight / Math.pow(height/100, 2);
+            let calorieNeeds, proteinNeeds;
+            
+            if (month <= 3) {
+                calorieNeeds = 1800 + (50 * month);
+                proteinNeeds = 60 + (5 * month);
+            } else if (month <= 6) {
+                calorieNeeds = 2000 + (75 * (month-3));
+                proteinNeeds = 75 + (7 * (month-3));
+            } else {
+                calorieNeeds = 2300 + (100 * (month-6));
+                proteinNeeds = 90 + (10 * (month-6));
+            }
+            
+            // Adjust based on BMI
+            if (bmi < 18.5) {
+                calorieNeeds *= 1.2;
+                proteinNeeds *= 1.1;
+            } else if (bmi > 25) {
+                calorieNeeds *= 0.9;
+            }
+            
+            document.getElementById('pregnancy-result-content').innerHTML = `
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1rem 0;">
+                    <div style="background-color: #E8F5E9; padding: 1rem; border-radius: 8px; text-align: center;">
+                        <p style="font-size: 0.9rem; color: #666;">Kebutuhan Kalori</p>
+                        <p style="font-size: 1.5rem; font-weight: bold; color: var(--primary);">${Math.round(calorieNeeds)} kkal</p>
+                    </div>
+                    <div style="background-color: #E8F5E9; padding: 1rem; border-radius: 8px; text-align: center;">
+                        <p style="font-size: 0.9rem; color: #666;">Kebutuhan Protein</p>
+                        <p style="font-size: 1.5rem; font-weight: bold; color: var(--primary);">${Math.round(proteinNeeds)} g</p>
+                    </div>
+                </div>
+                <p style="margin-top: 1rem;"><strong>Tips Gizi:</strong></p>
+                <ul style="margin-left: 1.5rem;">
+                    <li>Konsumsi makanan kaya asam folat seperti sayuran hijau</li>
+                    <li>Penuhi kebutuhan zat besi dengan daging dan hati</li>
+                    <li>Minum cukup air putih (8-10 gelas/hari)</li>
+                </ul>
+            `;
+            
+            document.getElementById('pregnancy-result').style.display = 'block';
+        });
+        
+        // Child Calculator
+        document.getElementById('calculate-child').addEventListener('click', function() {
+            const age = parseInt(document.getElementById('child-age').value);
+            const weight = parseFloat(document.getElementById('child-weight').value);
+            const height = parseInt(document.getElementById('child-height').value);
+            
+            if (!age || !weight || !height) {
+                alert('Harap isi semua data dengan benar');
+                return;
+            }
+            
+            // Simplified calculation (in real app, use proper formula)
+            let calorieNeeds, proteinNeeds;
+            
+            if (age <= 1) {
+                calorieNeeds = 800 + (weight * 10);
+                proteinNeeds = weight * 1.5;
+            } else if (age <= 3) {
+                calorieNeeds = 1000 + (weight * 8);
+                proteinNeeds = weight * 1.2;
+            } else {
+                calorieNeeds = 1200 + (weight * 6);
+                proteinNeeds = weight * 1.0;
+            }
+            
+            // Adjust if stunted (height for age)
+            const expectedHeight = age <= 2 ? 70 + (age * 6.5) : 85 + ((age - 2) * 7);
+            if (height < expectedHeight * 0.9) {
+                calorieNeeds *= 1.2;
+                proteinNeeds *= 1.3;
+            }
+            
+            document.getElementById('child-result-content').innerHTML = `
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1rem 0;">
+                    <div style="background-color: #E3F2FD; padding: 1rem; border-radius: 8px; text-align: center;">
+                        <p style="font-size: 0.9rem; color: #666;">Kebutuhan Kalori</p>
+                        <p style="font-size: 1.5rem; font-weight: bold; color: var(--dark);">${Math.round(calorieNeeds)} kkal</p>
+                    </div>
+                    <div style="background-color: #E3F2FD; padding: 1rem; border-radius: 8px; text-align: center;">
+                        <p style="font-size: 0.9rem; color: #666;">Kebutuhan Protein</p>
+                        <p style="font-size: 1.5rem; font-weight: bold; color: var(--dark);">${Math.round(proteinNeeds)} g</p>
+                    </div>
+                </div>
+                <p style="margin-top: 1rem;"><strong>Rekomendasi Makanan:</strong></p>
+                <ul style="margin-left: 1.5rem;">
+                    <li>Protein hewani: Telur, ikan, daging ayam</li>
+                    <li>Karbohidrat kompleks: Nasi merah, kentang, ubi</li>
+                    <li>Lemak sehat: Alpukat, minyak ikan</li>
+                </ul>
+            `;
+            
+            document.getElementById('child-result').style.display = 'block';
+        });
+        
+        // FAB Consultation Button
+        document.getElementById('consult-fab').addEventListener('click', function() {
+            alert('Fitur konsultasi online akan segera tersedia. Silakan kunjungi puskesmas terdekat untuk konsultasi langsung dengan ahli gizi.');
+        });
+        
+        // Animate progress bar
+        window.addEventListener('load', function() {
+            const progressBar = document.querySelector('.progress-bar');
+            if (progressBar) {
+                setTimeout(() => {
+                    progressBar.style.width = '75%';
+                }, 500);
+            }
+        });
+    </script>
+</body>
+</html>
